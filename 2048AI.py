@@ -35,5 +35,14 @@ spawnNums = list(scrapedLines[1].split(' '))
 # test
 print(maxNum)
 print(spawnNums)
-for i in range(2, len(scrapedLines)):
-    print(scrapedLines[i])
+
+# extracts the first state from the given 2048 puzzle
+firstState = scrapedLines
+del firstState[0]
+del firstState[0]
+
+print(firstState)
+
+startTime = datetime.now()
+# Solution goes here
+endTime = datetime.now()
