@@ -1,5 +1,8 @@
-import math
-import numpy as np
+# Akshith Gara
+# 2048 AI
+# CS5400
+
+from random import randrange, choice
 
 
 # type object argument after * must be an iterable, not grid
@@ -43,10 +46,27 @@ def move_is_possible(direction, field1):
         return False
 
 
+def spawn(field, spawnNums, spawnCount):
+    new_element = spawnNums[spawnCount]
+    if field[0][0] == 0:
+        field[0][0] = new_element
+    elif field[0][len(field) - 1] == 0:
+        field[0][len(field) - 1] = new_element
+    elif field[len(field) - 1][0] == 0:
+        field[len(field) - 1][0] = new_element
+    elif field[len(field) - 1][len(field) - 1] == 0:
+        field[len(field) - 1][len(field) - 1] = new_element
+    else:
+        return
+
+
+# Grid class to perform moves and add up values if they match
 class grid():
 
-    def __init__(self, current_grid):
+    def __init__(self, current_grid, spawnList):
         self.current_grid = current_grid
+        self.spawnList = spawnList
+        self.spawn_count = 0
 
     def move(self, direction):
         def move_row_left(row):
@@ -88,6 +108,8 @@ class grid():
             # //direction   0: up, 1: right, 2: down, 3: left
             if move_is_possible(direction, self.current_grid):
                 self.current_grid = moves[direction](self.current_grid)
+                spawn(self.current_grid, self.spawnList, self.spawn_count)
+                self.spawn_count += 1
                 return True
             else:
                 return False

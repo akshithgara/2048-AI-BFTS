@@ -51,11 +51,13 @@ for i in range(len(firstState)):
 print(maxNum)
 print(spawnNums)
 print(firstState)
+newGrid = grid(current_grid=firstState, spawnList=spawnNums)
+grid.move(newGrid, 'Left')
+grid.current_grid = newGrid
+print(newGrid.get_current_grid())
 # ---------------
 
-newGrid = grid(current_grid=firstState)
-grid.move(newGrid, 'Up')
-print(newGrid.get_current_grid())
+
 
 startTime = datetime.now()
 # Solution goes here
