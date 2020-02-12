@@ -5,7 +5,10 @@
 import sys
 from grid import grid
 from datetime import datetime
+from bfts import BFTS
 
+
+spCount = 0
 # Takes in input from the file passed as argument
 if len(sys.argv) > 1:
     inputFile = sys.argv[1]
@@ -48,17 +51,21 @@ for i in range(len(firstState)):
         firstState[i][j] = int(firstState[i][j])
 
 # test
-print(maxNum)
-print(spawnNums)
-print(firstState)
-newGrid = grid(current_grid=firstState, spawnList=spawnNums)
-grid.move(newGrid, 'Left')
-grid.current_grid = newGrid
-print(newGrid.get_current_grid())
-# ---------------
+# print(maxNum)
+# print(spawnNums)
+# print(firstState)
+# newGrid = grid(current_grid=firstState)
+# grid.move(newGrid, 'Left')
+# # grid.current_grid = newGrid
+# print(newGrid.get_current_grid())
+
 
 
 
 startTime = datetime.now()
 # Solution goes here
+
+sol = BFTS(firstState)
+
+print(sol[0])
 endTime = datetime.now()
