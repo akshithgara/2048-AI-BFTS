@@ -44,7 +44,6 @@ def move_is_possible(direction, field1):
         return False
 
 
-
 def spawn(field, spawnNums, spawnCount):
     new_element = spawnNums[spawnCount]
     if field[0][0] == 0:
@@ -62,11 +61,10 @@ def spawn(field, spawnNums, spawnCount):
 # Grid class to perform moves and add up values if they match
 class grid:
     spawnCount = 0
+
     def __init__(self, current_grid):
         self.current_grid = current_grid
         self.spawnList = [2, 2, 4]
-
-
 
     def move(self, direction):
         def move_row_left(row):
@@ -109,12 +107,10 @@ class grid:
 
             if move_is_possible(direction, self.current_grid):
                 self.current_grid = moves[direction](self.current_grid)
-                if grid.spawnCount > len(self.spawnList)-1:
-                    grid.spawnCount = grid.spawnCount%3
-                # print(grid.spawnCount)
+                if grid.spawnCount > len(self.spawnList) - 1:
+                    grid.spawnCount = grid.spawnCount % 3
                 spawn(self.current_grid, self.spawnList, grid.spawnCount)
                 grid.spawnCount += 1
-                # print(grid.spawnCount)
                 return True
             else:
                 return False

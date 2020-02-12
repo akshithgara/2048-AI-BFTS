@@ -2,7 +2,7 @@
 # 2048 AI
 
 from grid import grid
-
+import random
 class Node:
     def __init__(self, state, parent, action, pathCost):
         self.STATE = state  # The given 2048 initial state
@@ -14,37 +14,14 @@ class Node:
         childList = []
         curLayout = self.STATE
         curGrid = grid(current_grid=curLayout)
-        if grid.move(curGrid, 'Left'):
+        directionList=['Left', 'Right', 'Up','Down']
+        direction = random.choice(directionList)
+        if grid.move(curGrid, direction):
             # Generate the state for the child
             childState = []
-            print("tries l")
-            print(curGrid.get_current_grid())
             for line in curGrid.get_current_grid():
                 childState.append(line)
-            child = Node(childState, self, 'Left', self.PATHCOST + 1)
+            child = Node(childState, self, direction, self.PATHCOST + 1)
             childList.append(child)
-        if grid.move(curGrid, 'Right'):
-            childState = []
-            print("tries r")
-            print(curGrid.get_current_grid())
-            for line in curGrid.get_current_grid():
-                childState.append(line)
-            child = Node(childState, self, 'Right', self.PATHCOST + 1)
-            childList.append(child)
-        if grid.move(curGrid, 'Up'):
-            childState = []
-            print("tries u")
-            print(curGrid.get_current_grid())
-            for line in curGrid.get_current_grid():
-                childState.append(line)
-            child = Node(childState, self, 'Up', self.PATHCOST + 1)
-            childList.append(child)
-        if grid.move(curGrid, 'Down'):
-            childState = []
-            print("tries d")
-            print(curGrid.get_current_grid())
-            for line in curGrid.get_current_grid():
-                childState.append(line)
-            child = Node(childState, self, 'Down', self.PATHCOST + 1)
-            childList.append(child)
+
         return childList

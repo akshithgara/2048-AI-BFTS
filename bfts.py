@@ -1,9 +1,8 @@
-import queue
 from node import Node
 from grid import grid
 
 def isGoal(state):
-    # currState = state.get_current_grid()
+#     currState = state.get_current_grid()
     win = 8
     for line in state:
         for i in line:
@@ -13,28 +12,30 @@ def isGoal(state):
 
 
 def BFTS(state):
-    frontier = queue.Queue()
+    frontier = []
     root = Node(state, None, None, 0)
-    frontier.put(root)
+    frontier.append(root)
+    visited = []
+    count = 0
 
+    while len(frontier) != 0:
+        curNode = frontier.pop(0)
+        visited.append(curNode)
 
-    while True:
-        if frontier.empty():
-            return None
-
-        curNode = frontier.get()
-        # print(curNode.STATE)
+#         print(curNode.ACTION)
+#         print(curNode.STATE)
         if isGoal(curNode.STATE):
             sequence = []
             curTracing = curNode
 
-            while curTracing.PARENT is not None:
+            while curTracing.PARENT != None:
                 sequence.append(curTracing.ACTION)
+
+#                 print(curTracing.PARENT.STATE)
                 curTracing = curTracing.PARENT
-                print(sequence)
             sequence.reverse()
-            return (sequence, curNode)
+            return sequence, curNode
 
         for child in curNode.CHILDREN():
-            print('hits')
-            frontier.put(child)
+            if child not in visited:
+                frontier.append(child)

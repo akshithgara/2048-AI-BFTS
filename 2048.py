@@ -66,6 +66,6 @@ startTime = datetime.now()
 # Solution goes here
 
 sol = BFTS(firstState)
-
 print(sol[0])
+print(sol[1].STATE)
 endTime = datetime.now()
