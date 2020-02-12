@@ -10,18 +10,53 @@ class Node:
         self.ACTION = action  # A character, one of {LRUD}
         self.PATHCOST = pathCost  # Total number of moves
 
+
     def CHILDREN(self):
         childList = []
         curLayout = self.STATE
         curGrid = grid(current_grid=curLayout)
-        directionList=['Left', 'Right', 'Up','Down']
-        direction = random.choice(directionList)
-        if grid.move(curGrid, direction):
+        currState = self
+        if grid.move(curGrid, 'Up'):
             # Generate the state for the child
             childState = []
+
             for line in curGrid.get_current_grid():
                 childState.append(line)
-            child = Node(childState, self, direction, self.PATHCOST + 1)
+            child = Node(childState, self, 'U', self.PATHCOST + 1)
             childList.append(child)
+            curLayout = self.STATE
+            curGrid = grid(current_grid=curLayout)
+
+        if grid.move(curGrid, 'Down'):
+            childState = []
+
+
+            for line in curGrid.get_current_grid():
+                childState.append(line)
+            child = Node(childState, self, 'D', self.PATHCOST + 1)
+            childList.append(child)
+            curLayout = self.STATE
+            curGrid = grid(current_grid=curLayout)
+
+        if grid.move(curGrid, 'Left'):
+            childState = []
+
+            for line in curGrid.get_current_grid():
+                childState.append(line)
+            child = Node(childState, self, 'L', self.PATHCOST + 1)
+            childList.append(child)
+            curLayout = self.STATE
+            curGrid = grid(current_grid=curLayout)
+
+        if grid.move(curGrid, 'Right'):
+            childState = []
+
+            for line in curGrid.get_current_grid():
+                childState.append(line)
+            child = Node(childState, self, 'R', self.PATHCOST + 1)
+            childList.append(child)
+            curLayout = self.STATE
+            curGrid = grid(current_grid=curLayout)
+
 
         return childList
