@@ -2,7 +2,7 @@ from node import Node
 from grid import grid
 
 def isGoal(state):
-    win = 8
+    win = 16
     for line in state:
         for i in line:
             if i == win:
@@ -12,7 +12,7 @@ def isGoal(state):
 
 def BFTS(state):
     frontier = []
-    root = Node(state, None, None, 0)
+    root = Node(state, None, None, 0, 0)
     frontier.append(root)
 
     while len(frontier) != 0:
@@ -25,14 +25,14 @@ def BFTS(state):
             while curTracing.PARENT != None:
                 sequence.append(curTracing.ACTION)
                 curTracing = curTracing.PARENT
-#                 print("Parent:", curTracing.STATE)
+                print("Parent:", curTracing.STATE)
             sequence.reverse()
 
             return sequence, curNode
 
-        print("parent node:", curNode.STATE)
+#         print("parent node:", curNode.STATE)
         for child in curNode.CHILDREN():
-            print("child nodes: ", child.STATE)
+#             print("child nodes: ", child.STATE)
             frontier.append(child)
 
 
