@@ -2,7 +2,6 @@
 # 2048 AI
 
 from grid import grid
-import random
 class Node:
     def __init__(self, state, parent, action, pathCost, spawn):
         self.STATE = state  # The given 2048 initial state
