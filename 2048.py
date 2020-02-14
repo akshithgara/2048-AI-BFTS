@@ -8,7 +8,8 @@ from datetime import datetime
 from bfts import BFTS
 
 
-spCount = 0
+
+
 # Takes in input from the file passed as argument
 if len(sys.argv) > 1:
     inputFile = sys.argv[1]
@@ -32,8 +33,11 @@ for line in range(len(scrapedLines)):
     scrapedLines[line] = scrapedLines[line].replace('\n', '')
 
 # Stores goal and spawn numbers
-maxNum = scrapedLines[0]
-spawnNums = list(scrapedLines[1].split(' '))
+maxNum = int(scrapedLines[0])
+gridSize = list(scrapedLines[1].split(' '))
+for num in range(len(gridSize)):
+    gridSize[num] = int(gridSize[num])
+spawnNums = list(scrapedLines[2].split(' '))
 for num in range(len(spawnNums)):
     spawnNums[num] = int(spawnNums[num])
 
@@ -43,6 +47,7 @@ for line in range(2, len(scrapedLines)):
     scrapedLines[line] = list(scrapedLines[line].split(' '))
 
 firstState = scrapedLines
+del firstState[0]
 del firstState[0]
 del firstState[0]
 
@@ -58,10 +63,7 @@ for i in range(len(firstState)):
 # grid.move(newGrid, 'Left')
 # # grid.current_grid = newGrid
 # print(newGrid.get_current_grid())
-
-
-
-
+#
 startTime = datetime.now()
 # Solution goes here
 
