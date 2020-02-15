@@ -5,6 +5,7 @@
 import sys
 from datetime import datetime
 from bfts import BFTS
+
 from scraper import *
 
 if __name__ == '__main__':
@@ -13,11 +14,12 @@ if __name__ == '__main__':
     else:
         inputFile = input("Please enter the filename: ")
 
-    firstState, goal = inputGrabber(inputFile)
+    firstState, goal, spawnList = inputGrabber(inputFile)
     startTime = datetime.now()
     # Solution goes here
 
-    sol = BFTS(firstState, goal)
+
+    sol = BFTS(firstState, goal, spawnList)
     print(sol[0])
     print(sol[1].STATE)
     endTime = datetime.now()

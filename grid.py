@@ -61,9 +61,9 @@ def spawn(field, spawnNums, spawnCount):
 # Grid class to perform moves and add up values if they match
 class grid:
 
-    def __init__(self, current_grid):
+    def __init__(self, current_grid, spawn_list):
         self.current_grid = current_grid
-        self.spawnList = [2, 2, 4]
+        self.spawnList = spawn_list
 
     def move(self, direction, spawnVal):
         def move_row_left(row):

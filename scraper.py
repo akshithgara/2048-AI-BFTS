@@ -1,4 +1,4 @@
-# Stores goal and spawn numbers
+
 
 def inputGrabber(inputFile):
     grabbed = False
@@ -38,5 +38,4 @@ def inputGrabber(inputFile):
         for j in range(len(firstState[i])):
             firstState[i][j] = int(firstState[i][j])
 
-    return firstState, goalNum
-
+    return firstState, goalNum, spawnList
