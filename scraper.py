@@ -2,6 +2,8 @@
 # 2048 AI
 # CS5400
 
+# Function to grab the input from the input file and extract the necessary values.
+
 
 def inputGrabber(inputFile):
     grabbed = False

@@ -5,6 +5,7 @@
 from node import Node
 
 
+# Function to check if the goal state has been achieved.
 def isGoal(state, goal):
     win = goal
     for line in state:
@@ -14,6 +15,7 @@ def isGoal(state, goal):
     return False
 
 
+# Breadth First Tree Search function to traverse through the given input and the give the shortest route.
 def BFTS(state, goal, spawnList):
     frontier = []
     root = Node(state, None, None, 0, 0)

@@ -3,7 +3,6 @@
 # CS5400
 
 
-# type object argument after * must be an iterable, not grid
 def transpose(field):
     return [list(row) for row in zip(*field)]
 
@@ -12,6 +11,7 @@ def invert(field):
     return [row[::-1] for row in field]
 
 
+# Function to check if a move in a particular direction is possible.
 def move_is_possible(direction, field1):
     def row_is_left_movable(row):
         def change(i):  # true if there'll be change in i-th tile
@@ -44,6 +44,7 @@ def move_is_possible(direction, field1):
         return False
 
 
+# Function to spawn values as per the given guidelines
 def spawn(field, spawnNums, spawnCount):
     new_element = spawnNums[spawnCount]
     if field[0][0] == 0:
@@ -102,8 +103,7 @@ class grid:
             transpose(moves['Right'](transpose(field)))
 
         if direction in moves:
-            # //direction   0: up, 1: right, 2: down, 3: left
-
+            # Spawns the values circularly
             if move_is_possible(direction, self.current_grid):
                 self.current_grid = moves[direction](self.current_grid)
                 if spawnVal > len(self.spawnList) - 1:

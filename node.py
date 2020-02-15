@@ -7,13 +7,13 @@ from grid import grid
 
 class Node:
     def __init__(self, state, parent, action, pathCost, spawn):
-        self.STATE = state  # The given 2048 initial state
-        self.PARENT = parent  # A node instance, or none for the starting node
-        self.ACTION = action  # A character, one of {LRUD}
-        self.PATHCOST = pathCost  # Total number of moves
-        self.SPAWN = spawn
+        self.STATE = state  # The given 2048 initial state.
+        self.PARENT = parent  # A node instance, or none for the starting node.
+        self.ACTION = action  # A character, one of {LRUD}.
+        self.PATHCOST = pathCost  # Total number of moves.
+        self.SPAWN = spawn # Stores the current spawn value from the given list.
 
-    def CHILDREN(self, sl):
+    def CHILDREN(self, sl): # Function to try out all the moves and add it to the childList.
         childList = []
         curLayout = self.STATE
         curGrid = grid(current_grid=curLayout, spawn_list=sl)
