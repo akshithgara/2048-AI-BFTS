@@ -15,11 +15,13 @@ if __name__ == '__main__':
         inputFile = input("Please enter the filename: ")
 
     firstState, goal, spawnList = inputGrabber(inputFile)
+
     startTime = datetime.now()
-    # Solution goes here
-
-
     sol = BFTS(firstState, goal, spawnList)
-    print(sol[0])
-    print(sol[1].STATE)
     endTime = datetime.now()
+    execTime = endTime - startTime
+    print(execTime.microseconds)
+    print(sol[1].PATHCOST)
+    print(''.join(sol[0]))
+    for line in sol[1].STATE:
+        print(' '.join([str(x) for x in line]))
